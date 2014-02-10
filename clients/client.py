@@ -115,6 +115,8 @@ if __name__ == '__main__':
 				check_ip = 6
 			elif(data == "You are connecting via: IPv6\n\x00\x00"):
 				check_ip = 4
+			else:
+				continue
 
 			while 1:
 				CPU = get_cpu()
