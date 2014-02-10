@@ -67,7 +67,10 @@ def delta_time():
 	return y
 def get_cpu():
 	t=delta_time()
-	result=100-(t[len(t)-1]*100.00/sum(t))
+	st = sum(t)
+	if st == 0:
+		st = 1
+	result=100-(t[len(t)-1]*100.00/st)
 	return round(result)
 
 def get_network(ip_version):
