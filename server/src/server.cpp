@@ -167,13 +167,13 @@ void CServer::Update()
 	for(int i = 0; i < NET_MAX_CLIENTS; ++i)
 	{
 		if(m_aClients[i].m_State == CClient::STATE_CONNECTED &&
-			time_get() > m_aClients[i].m_TimeConnected + 3 * time_freq())
+			time_get() > m_aClients[i].m_TimeConnected + 15 * time_freq())
 		{
-			m_Network.NetBan()->BanAddr(m_Network.ClientAddr(i), 1*60, "Authentication timeout.");
+			//m_Network.NetBan()->BanAddr(m_Network.ClientAddr(i), 1*60, "Authentication timeout.");
 			m_Network.Drop(i, "Authentication timeout.");
 		}
 		else if(m_aClients[i].m_State == CClient::STATE_AUTHED &&
-			time_get() > m_aClients[i].m_LastReceived + 15 * time_freq())
+			time_get() > m_aClients[i].m_LastReceived + 60 * time_freq())
 			m_Network.Drop(i, "Timeout.");
 	}
 }
